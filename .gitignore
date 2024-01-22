@@ -1,0 +1,8 @@
+# pushing the env would lead to sensitive info like discord tokens being public which is bad
+.env
+
+# no need to push our "compiled" code
+dist
+
+# yeah
+/node_modules
