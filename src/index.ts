@@ -1,11 +1,16 @@
-import { Client, GatewayIntentBits } from "discord.js" 
+import { GatewayIntentBits } from "discord.js" 
+import ExtClient from "./lib/extendedDiscord/ExtClient"
 import { LogLevel } from "log75"
 import Logger from "./lib/logger/logger"
 import loadEvents from "./utils/loadEvents"
 
+if(typeof process.env.DISCORD_BOT_OWNERS === "string") {
+    process.env.DISCORD_BOT_OWNERS = process.env.DISCORD_BOT_OWNERS.split(",")
+}
+
 const logger = new Logger(LogLevel.Debug, { color: true })
 
-const bot = new Client({ 
+const bot = new ExtClient({ 
     intents: [
 		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMessages,
@@ -16,7 +21,7 @@ const bot = new Client({
 
 loadEvents(bot)
 
-export { logger }
+export { logger, bot }
 
 if(!process.env.DISCORD_AUTH_TOKEN) {
     logger.warn(`

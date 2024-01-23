@@ -4,6 +4,8 @@ declare global {
         DISCORD_AUTH_TOKEN: string;
         NODE_ENV: 'development' | 'production';
         DISCORD_BOT_STATUS: string;
+        DISCORD_BOT_PREFIX: string,
+        DISCORD_BOT_OWNERS: string|string[]
       }
     }
   }

@@ -26,3 +26,6 @@ Set up an empty directory and open the console. After that run these commands in
 rename the example.env file to just ".env" and input the required data into it.
 
 `npm run start` - will start the bot! Happy coding ;\)
+
+### Registering commands
+You can register any slash command you have created by running the built in `!register <local|global>` command directly via discord!
