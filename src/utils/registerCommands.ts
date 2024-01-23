@@ -24,7 +24,7 @@ export default async function registerCommands(commands: Command[], clientID: st
 
         await rest.put(
             path,
-            { body: commands }
+            { body: cmds }
         )
 
         logger.done(`successfully refreshed commands!`)

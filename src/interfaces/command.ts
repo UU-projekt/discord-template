@@ -18,7 +18,7 @@ export type CommandExecutionContext = {
 
 export interface Command extends BaseCommand {
     data: Omit<SlashCommandBuilder, "addSubcommandGroup" | "addSubcommand"> | SlashCommandSubcommandsOnlyBuilder,
-    run: (interaction: ChatInputCommandInteraction) => Promise<void>
+    run: (interaction: ChatInputCommandInteraction, ctx: CommandExecutionContext) => Promise<void>
 }
 
 type TextCommandContext = {
