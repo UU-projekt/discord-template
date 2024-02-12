@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "@top-gg/sdk": "^3.1.6",
     "@types/node": "^20.11.0",
     "discord.js": "^14.14.1",
     "log75": "^3.0.1",
+    "topgg-autoposter": "^2.0.2",
     "typescript": "^5.3.3"
   },
   "scripts": {

@@ -5,7 +5,12 @@ declare global {
         NODE_ENV: 'development' | 'production';
         DISCORD_BOT_STATUS: string;
         DISCORD_BOT_PREFIX: string,
-        DISCORD_BOT_OWNERS: string|string[]
+        DISCORD_BOT_OWNERS: string|string[],
+        
+        TOPGG_AUTH_TOKEN?: string,
+        TOPGG_AUTOPOST_STATS?: boolean,
+        TOPGG_REQUEST_TIMEOUT?: number,
+        TOPGG_VOTE_LOCK_FAIL_BEHAVIOUR?: "deny"|"accept"
       }
     }
   }

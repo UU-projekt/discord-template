@@ -18,7 +18,7 @@ const test: TextCommand = {
             } else if(interaction.args[1] === "global") {
                 await registerCommands(commands, bot.user.id)
             } else {
-                interaction.message.reply(`Need to provide command registration context.\nMissing argument 1: \`local | global\``)
+                return interaction.message.reply(`Need to provide command registration context.\nMissing argument 1: \`local | global\``)
             }
         } catch(error) {
             interaction.message.reply(`Could not register commands.\n**error:** \`${error}\``)

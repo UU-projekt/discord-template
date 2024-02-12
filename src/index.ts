@@ -3,6 +3,7 @@ import ExtClient from "./lib/extendedDiscord/ExtClient"
 import { LogLevel } from "log75"
 import Logger from "./lib/logger/logger"
 import loadEvents from "./utils/loadEvents"
+import { AutoPoster } from "topgg-autoposter"
 
 if(typeof process.env.DISCORD_BOT_OWNERS === "string") {
     process.env.DISCORD_BOT_OWNERS = process.env.DISCORD_BOT_OWNERS.split(",")
@@ -18,6 +19,18 @@ const bot = new ExtClient({
 		GatewayIntentBits.GuildMembers,
 	],
 })
+
+if(process.env.TOPGG_AUTH_TOKEN && process.env.TOPGG_AUTOPOST_STATS) {
+    const poster = AutoPoster(process.env.TOPGG_AUTH_TOKEN, bot)
+
+    poster.on("posted", () => {
+        logger.done("Posted bot stats to top.gg")
+    })
+
+    // If you get too many post errors you can comment out the code below and switch it for the commented code
+    // poster.on("error", () => { })
+    poster.on("error", (err) => logger.error(`failed to post stats to top.gg: ${err}`))
+}
 
 loadEvents(bot)
 

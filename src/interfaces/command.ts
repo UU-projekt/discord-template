@@ -3,9 +3,10 @@ import { ContextType } from "../lib/logger/logger"
 
 type GateKeepingOptions = {
     ownerOnly?: boolean,
-    userPermissions?: PermissionResolvable,
-    botPermissions?: PermissionResolvable,
-    devServerOnly?: Boolean
+    userPermissions?:   PermissionResolvable,
+    botPermissions?:    PermissionResolvable,
+    devServerOnly?:     boolean,
+    votelock?:          boolean
 }
 
 export interface BaseCommand {
@@ -18,7 +19,7 @@ export type CommandExecutionContext = {
 
 export interface Command extends BaseCommand {
     data: Omit<SlashCommandBuilder, "addSubcommandGroup" | "addSubcommand"> | SlashCommandSubcommandsOnlyBuilder,
-    run: (interaction: ChatInputCommandInteraction, ctx: CommandExecutionContext) => Promise<void>
+    run: (interaction: ChatInputCommandInteraction, ctx: CommandExecutionContext) => Promise<any>
 }
 
 type TextCommandContext = {
@@ -27,6 +28,6 @@ type TextCommandContext = {
 }
 
 export interface TextCommand extends BaseCommand {
-    run: (interaction: TextCommandContext, ctx: CommandExecutionContext) => Promise<void>,
+    run: (interaction: TextCommandContext, ctx: CommandExecutionContext) => Promise<any>,
     name: string
 }

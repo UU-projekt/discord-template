@@ -19,7 +19,7 @@ export default function loadCommands(baseDir: string = "../commands/", dirDive: 
     const p = path.join(__dirname, baseDir + (dirDive ? dirDive : ""))
     for(let file of readdirSync(p)) {
         const fileStat = statSync(path.join(p, file))
-        if(fileStat.isFile() && file.endsWith(".js")) {
+        if(fileStat.isFile() && file.endsWith(".js") && !file.startsWith("example")) {
             delete require.cache[ require.resolve(`../commands/${dirDive}/${file}`) ]
             const cmdReq = require(`../commands/${dirDive}/${file}`)?.default
             if(!cmdReq) {
